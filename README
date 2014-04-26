@@ -1,5 +1,0 @@
-This repo has files added to it from visual studio Projects folder
-
-Due to the way visual studio handles and stores projects, each solutions has an 'extra' subdirectory.
-
-Just including the source & txt files into this repo so others can easily see and compile my code.
