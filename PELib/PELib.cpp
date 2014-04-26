@@ -117,24 +117,24 @@ namespace PELib{
 	//Returns the GCD of a and b
 	int PELib::getGCD(int a, int b){
 
-    if(a > b){
-        if(a % b == 0){
-            return b;
-        }
-        else{
-            b = a % b;
-            PELib::getGCD(a, b);
-        }
-    }
-    else{
-        if(b % a == 0){
-            return a;
-        }
-        else{
-            a = b % a;
-            PELib::getGCD(a, b);
-        }
-    }
-	return -1;
-}
+		if(a > b){
+			if(a % b == 0){
+				return b;
+			}
+			else{
+				b = a % b;
+				PELib::getGCD(a, b);
+			}
+		}
+		else{
+			if(b % a == 0){
+				return a;
+			}
+			else{
+				a = b % a;
+				PELib::getGCD(a, b);
+			}
+		}
+		return -1;
+	}
 }
