@@ -7,7 +7,3 @@ Arithmetic series can solve this easily
 
 333*(3+999)/2 + 199*(5 + 995)/2 - 66*(15 + 990)/2 = 233168
 */
-
-int main(){
-
-}

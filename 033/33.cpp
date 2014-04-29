@@ -35,7 +35,7 @@ int main(){
 		}
 	}
 
-	den /= PELib::getGCD(num, den);
+	den /= PELib::GCD(num, den);
 
 	cout << "The denominator is " << den << endl;
 }
