@@ -1,6 +1,8 @@
 #include "PELib.h"
 #include <math.h>
 #include <stdint.h>
+#include <algorithm>
+#include <vector>
 
 bool PELib::isPalindrome(int num, int base){
 	int reverseNum = num % base;
@@ -54,18 +56,61 @@ int PELib::makePalindrome(int input, bool odd, int base){
 	return palindrome;
 }
 
-void PELib::eSieve(bool *a, int size){
+int PELib::eSieve(bool *a, int size){
 	a[0] = 0;
 	a[1] = 0;
+	int count = 1;
 	int nsqrt = (int)sqrt(size * 1.0);
 
 	for(int i = 2; i < nsqrt; i++){
 		if(a[i]){
-			for(int j = i*i; j < size; j += i){
+			count++;
+			for(int j = i*i; j <= size; j += i){
 				a[j] = false;
 			}
 		}
 	}
+	return count;
+}
+
+void PELib::primesList(int limit, std::vector<uint64_t> &primes){
+	bool *a = (bool *)malloc(sizeof(bool) * (limit + 1));
+	//fill_n doesn't like using variable size so just doing it the old fashion way
+	for(int i = 0; i <= limit; i++){
+		a[i] = true;
+	}
+
+	int count = PELib::eSieve(a, limit);
+
+	primes.reserve(count);
+
+	for(int i = 2; i < limit; i++){
+		if(a[i]){
+			primes.push_back(i);
+		}
+	}
+
+	free(a);
+}
+
+void PELib::primesList(int limit, std::vector<int> &primes){
+	bool *a = (bool *)malloc(sizeof(bool) * (limit + 1));
+	//fill_n doesn't like using variable size so just doing it the old fashion way
+	for(int i = 0; i <= limit; i++){
+		a[i] = true;
+	}
+
+	int count = PELib::eSieve(a, limit);
+
+	primes.reserve(count);
+
+	for(int i = 2; i < limit; i++){
+		if(a[i]){
+			primes.push_back(i);
+		}
+	}
+
+	free(a);
 }
 
 int PELib::properDivisorSum(int num){
